@@ -1,0 +1,27 @@
+image:
+  registry: docker.io
+  repository: httpd
+  tag: 2-alpine3.18
+  pullPolicy: Always
+  port: 80
+
+
+service:
+  enabled: true
+
+deployment:
+  replicas: 1
+  enabled: true
+  imagePullPolicy: Always
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+ingress:
+  enabled: true
+  ingressClassName: public
+  entries:
+    - name: public
+      hosts:
+        - hostname: httpd-full-config.example.com
